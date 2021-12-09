@@ -3,11 +3,11 @@ Calculate Relative Account Balance for a given account.
 
  # How to guide
  
-   # Run Tests  
+   ### Run Tests  
    
    $ mvn test
    
-  # Build jar
+  ### Build jar
    
    $ mvn package
     
