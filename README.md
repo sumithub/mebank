@@ -2,11 +2,12 @@
 Calculate Relative Account Balance for a given account.
 
  # How to guide
-   Run Tests  
+ 
+   # Run Tests  
    
    $ mvn test
    
-   Build jar
+  # Build jar
    
    $ mvn package
     
@@ -14,7 +15,7 @@ Calculate Relative Account Balance for a given account.
    
    Above command builds a jar file under target/mebank-1.0-SNAPSHOT.jar location.
    
-   1. Build the jar file from command line
+   1. Run the jar file from command line
    
       $ java -jar target/mebank-1.0-SNAPSHOT.jar
    
