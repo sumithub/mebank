@@ -27,7 +27,9 @@ public class RelativeAccountBalanceCalculator {
 
     private List<Transaction> filterByAccountId(String accountId, List<Transaction> transactions) {
         return transactions.stream()
-                .filter(transaction -> transaction.getFromAccountId().equals(accountId))
+                .filter(transaction ->
+                        transaction.getFromAccountId().equals(accountId)
+                        || transaction.getToAccountId().equals(accountId))
                 .collect(Collectors.toList());
     }
 
@@ -57,8 +59,12 @@ public class RelativeAccountBalanceCalculator {
 
     private AccountBalance calculateRelativeBalance(String accountId, List<Transaction> filteredDateTransactions) {
         BigDecimal amount = new BigDecimal("0.0");
-        for (Transaction t: filteredDateTransactions)
-            amount = amount.subtract(t.getAmount());
+        for (Transaction t: filteredDateTransactions) {
+            if (t.getFromAccountId().equals(accountId))
+                amount = amount.subtract(t.getAmount());
+            else
+                amount = amount.add(t.getAmount());
+        }
         return new AccountBalance(accountId, amount, filteredDateTransactions.size());
     }
 }

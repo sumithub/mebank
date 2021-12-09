@@ -57,8 +57,9 @@ public class RelativeAccountBalanceCalculatorTest {
         // when
         List<Transaction> filteredTransactions = Whitebox.invokeMethod(relativeAccountBalanceCalculator, "filterByAccountId", "AC5", transactionList);
         // then
-        assertEquals(1, filteredTransactions.size());
-        assertEquals("AC5", filteredTransactions.get(0).getFromAccountId());
+        assertEquals(5, filteredTransactions.size());
+        assertTrue(filteredTransactions.get(0).getFromAccountId().equals("AC5")
+                || filteredTransactions.get(0).getToAccountId().equals("AC5"));
     }
 
     @Test
